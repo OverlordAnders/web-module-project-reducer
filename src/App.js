@@ -10,7 +10,8 @@ import { addOne } from './actions';
 import { applyNumber } from './actions';
 import { changeOperation } from './actions';
 import { clearDisplay } from './actions';
-
+import { addMemory } from './actions';
+import { clearMemory } from './actions';
 
 
 function App() {
@@ -25,6 +26,12 @@ function App() {
   }
   const handleClear = ()=>{
     dispatch(clearDisplay());
+  }
+  const handleAddMemory = ()=>{
+    dispatch(addMemory());
+  }
+  const handleClearMemory = ()=>{
+    dispatch(clearMemory());
   }
 
   return (
@@ -44,9 +51,9 @@ function App() {
             </div>
             
             <div className="row">
-              <CalcButton value={"M+"}/>
+              <CalcButton onClick={()=>handleAddMemory()} value={"M+"}/>
               <CalcButton value={"MR"}/>
-              <CalcButton value={"MC"}/>
+              <CalcButton onClick={()=>handleClearMemory()}value={"MC"}/>
             </div>
 
             <div className="row">
