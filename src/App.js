@@ -8,6 +8,8 @@ import { useReducer } from 'react';
 import reducer, {initialState} from './reducers';
 import { addOne } from './actions';
 import { applyNumber } from './actions';
+import { changeOperation } from './actions';
+import { clearDisplay } from './actions';
 
 
 
@@ -17,6 +19,12 @@ function App() {
   
   const handleApplyNum = (value)=>{
     dispatch(applyNumber(value));
+  }
+  const handleChangeOperation = (operator) => {
+    dispatch(changeOperation(operator));
+  }
+  const handleClear = ()=>{
+    dispatch(clearDisplay());
   }
 
   return (
@@ -60,13 +68,13 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"+"}/>
-              <CalcButton value={"*"}/>
-              <CalcButton value={"-"}/>
+              <CalcButton onClick={()=>handleChangeOperation("+")}value={"+"}/>
+              <CalcButton onClick={()=>handleChangeOperation("*")} value={"*"}/>
+              <CalcButton onClick={()=>handleChangeOperation("-")} value={"-"}/>
             </div>
 
             <div className="row ce_button">
-              <CalcButton value={"CE"}/>
+              <CalcButton onClick={handleClear} value={"CE"}/>
             </div>
 
           </form>
